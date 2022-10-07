@@ -9,7 +9,7 @@ const Weather = ({ lat, lng, openMore }) => {
     const fetch = async () => {
       try {
         const { data } = await axios.get(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
+          `//api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&units=metric&appid=${process.env.REACT_APP_WEATHER_KEY}`
         );
         setWeatherData(data);
       } catch (err) {
