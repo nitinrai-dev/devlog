@@ -18,7 +18,7 @@ const Post = () => {
       }
     };
     fetch();
-  }, []);
+  }, [slug]);
   return (
     <Layout>
       <article>
