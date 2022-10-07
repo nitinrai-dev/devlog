@@ -51,6 +51,9 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
 h1 {font-size: 3.052rem;}
 
 h2 {font-size: 2.074rem;}
@@ -61,7 +64,7 @@ h4 {font-size: 1.44rem;}
 
 h5 {font-size: 1.2rem;}
 
-small {font-size: 0.833rem;}
+small {font-size: 0.9rem;}
 
 h1, h2, h3, h4, h5 {
     line-height: 1.3;

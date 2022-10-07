@@ -1,80 +1,83 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { Flex } from "../Styles/Flexbox";
 
-const getLocalItems = () => {
-  let list = localStorage.getItem('lists');
-  if (list) {
-    return JSON.parse(localStorage.getItem('lists'));
-  } else {
-    return [];
-  }
-}
-
 const ToDo = () => {
+  const initialState = JSON.parse(localStorage.getItem('todos')) || [];
   const [showInput, setShowInput] = useState(false);
-  const [inputData, setInputData] = useState("");
-  const [items, setItems] = useState(getLocalItems());
-  const [isEditItem, setIsEditItem] = useState(null);
+  const [input, setInput] = useState("");
+  const [todos, setTodos] = useState(initialState);
+  const [editTodo, setEditTodo] = useState(null);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleToggle = () => {
     setShowInput(!showInput);
   };
 
-  const addItem = (event) => {
-    event.preventDefault();
-    if (!inputData) {
-    } else if (inputData && isEditItem) {
-      setItems(
-        items.map((item) => {
-          if (item.id === isEditItem) {
-            return { ...items, name: inputData}
-          }
-          return item;
-        })
-      )
-      setShowInput(false);
-      setInputData('');
-      setIsEditItem(null);
+  const updateTodo = (title, id, completed) => {
+    const newTodo = todos.map((todo) =>
+      todo.id === id ? { title, id, completed } : todo
+    );
+    setTodos(newTodo);
+    setEditTodo('');
+  };
+
+  useEffect(() => {
+    if (editTodo) {
+      setInput(editTodo.title);
     } else {
-      const allInputData = { id: uuidv4(), name: inputData};
-      setItems([...items, allInputData]);
-      setInputData("");
+      setInput('');
+    }
+  }, [setInput, editTodo]);
+
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(!editTodo) {
+      setTodos([...todos, { id: uuidv4(), title: input, completed: false }]);
+      setInput("");
+    } else {
+      updateTodo(input, editTodo.id, editTodo.completed)
     }
   };
 
-  const deleteItem = (index) => {
-    const updatedItems = items.filter((item) => {
-      return index !== item.id;
-    });
-    setItems(updatedItems);
+  const handleComplete = (todo) => {
+    setTodos(
+      todos.map((item) => {
+        if(item.id === todo.id) {
+          return {...item, completed: !item.completed}
+        }
+        return item;
+      })
+    )
+  };
+  const handleEdit = ({id}) => {
+    setShowInput(true);
+    const findTodo = todos.find((todo) => todo.id === id);
+    setEditTodo(findTodo);
+  };
+  const handleDelete = ({id}) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  const editItem = (id) => {
-    let newEditItem = items.find((item) => {
-      return item.id === id;
-    });
-    setShowInput(true);
-    setInputData(newEditItem.name);
-    setIsEditItem(id);
-  }
-
-  useEffect(() => {
-    localStorage.setItem('lists', JSON.stringify(items))
-  }, [items])
 
   return (
     <StyledToDo>
       <h4>
-        <Flex spaceBetween>
-          ToDo List{" "}
-          <button onClick={handleToggle}>
+        <Flex spaceBetween>ToDo List 
+
+        <button className={editTodo ? 'disabled' : ''} onClick={handleToggle}>
           {showInput ? "Cancel" : "Add a task"}
           </button>
         </Flex>
       </h4>
-      
+
       <div className="placeholder">
         <p>Get more done</p>
         <h3>
@@ -90,22 +93,25 @@ const ToDo = () => {
       </div>
 
       <div className="todoItems">
-        <form className={showInput ? null : "hidden"} onSubmit={addItem}>
+        <form className={showInput ? null : "hidden"} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Take a note..."
-            value={inputData}
-            onChange={(e) => setInputData(e.target.value)}
+            value={input}
+            required
+            onChange={handleChange}
           />
         </form>
+
         <div className="eachItem">
-          {items.map((item) => {
+          {todos.map((todo) => {
             return (
-              <Flex spaceBetween key={item.id}>
-                {item.name}
+              <Flex className={`${todo.completed ? 'completed' : ''}`} spaceBetween key={todo.id}>
+                {todo.title}  
                 <div>
-                <button onClick={() => editItem(item.id)}>Edit</button>
-                <button onClick={() => deleteItem(item.id)}>Delete</button>
+                  <button className="hidden" onClick={() => handleComplete(todo)}>Done</button>
+                  <button onClick={() => handleEdit(todo)}>Edit</button>
+                  <button onClick={() => handleDelete(todo)}>Delete</button>
                 </div>
               </Flex>
             );
@@ -133,6 +139,10 @@ const StyledToDo = styled.div`
       padding-inline: 1rem;
       border-radius: 6px;
       cursor: pointer;
+      &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
     }
   }
   & .placeholder {
@@ -159,10 +169,14 @@ const StyledToDo = styled.div`
       height: 0;
     }
     & .eachItem > div {
-      background: #ccff90;
+      background: transparent;
       margin-block: 0.5rem;
       padding: 12px 10px;
       border-radius: 6px;
+      border: 1px solid #ddd;
+      & button.hidden {
+        display: none;
+      }
     }
   }
 `;

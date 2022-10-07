@@ -6,6 +6,7 @@ import {
   darkTheme,
 } from "./Styles/GlobalStyle";
 import Header from "./Header";
+import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   const [theme, setTheme] = useState("light");
@@ -18,6 +19,7 @@ const Layout = ({ children }) => {
       <GlobalStyle />
       <Header theme={theme} themeToggler={themeToggler} />
       <main>{children}</main>
+      <Footer />
     </ThemeProvider>
   );
 };

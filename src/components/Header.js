@@ -8,7 +8,7 @@ const Header = ({ theme, themeToggler }) => {
       <Container>
         <Flex alignCenter spaceBetween>
           <h2>DEVLOG</h2>
-          <button onClick={themeToggler}>
+          <button onClick={themeToggler} title='Change theme'>
             {theme === "light" ? <p>Dark</p> : <p>Light</p>}
           </button>
         </Flex>

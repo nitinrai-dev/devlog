@@ -3,12 +3,12 @@ import Articles from "../components/Articles";
 import Layout from "../components/Layout";
 import { Container } from "../components/Styles/GlobalStyle";
 import ToDo from "../components/TODO Section/ToDo";
-import Weather from "../components/Weather";
+import Index from "../components/Weather Section";
 
 const Home = () => {
   return (
     <Layout>
-      <Weather />
+      <Index />
       <StyledWrapper>
         <Container>
           <Articles />
