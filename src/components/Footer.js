@@ -21,7 +21,7 @@ const StyledFooter = styled.footer`
         display: block;
         text-align: center;
         word-spacing: 2px;
-        color: ${({ theme }) => theme.light};
+        color: ${({ theme }) => theme.text};
         & b {
           color: ${({ theme }) => theme.accent2};
         }
