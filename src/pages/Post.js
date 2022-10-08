@@ -46,6 +46,37 @@ const StyleArticle = styled.section`
     background: ${({ theme }) => theme.light};
     border-radius: 8px;
     padding: 1.5rem;
+    width: min(70rem, 100%);
+    margin-inline: auto;
+    & > div h1 {
+      font-size: 2rem;
+    }
+    & p {
+      font-size: 1.25rem;
+    }
+    & blockquote {
+      border-left: 6px solid ${({ theme }) => theme.background};
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 1rem;
+      & p {
+        font-size: 1.6rem;
+      }
+      &.ltag__twitter-tweet {
+      width: min(45rem, 100%);
+      margin-inline: auto;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0;
+      & .ltag__twitter-tweet__main {
+        padding: 1rem;
+        & a {
+          text-decoration: none !important;
+        }
+      }
+    }
+    }
     & button {
       background: ${({ theme }) => theme.accent3};
       color: #fff;
@@ -55,7 +86,46 @@ const StyleArticle = styled.section`
       letter-spacing: 1px;
     }
     & img, video {
-      width: 100%;
+      max-width: 100%;
+    }
+    & ul {
+      padding-left: 15px;
+      & li {
+        font-size: 1.25rem;
+      }
+    }
+    & a {
+      color: ${({ theme }) => theme.accent3};
+      font-weight: 400;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+    & .ltag__link {
+      display: flex;
+      width: min(55rem, 100%);
+      margin: 1rem auto;
+      border: 2px solid ${({ theme }) => theme.text};
+      padding: 1rem;
+      border-radius: 6px;
+      gap: 1rem;
+      & .ltag__link__link {
+        text-decoration: none !important;
+        & h3 {
+          font-size: 1.2rem;
+          color: #777;
+        }
+        & .ltag__link__pic img {
+          border-radius: 100%;
+        }
+      }
+    }
+    & .highlight {
+      background: #111;
+      color: #f1ede7;
+      padding: 1rem;
+      margin-block: 1rem;
+      border-radius: 6px;
     }
   }
   @media (max-width: 540px) {

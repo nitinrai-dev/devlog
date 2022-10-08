@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { BiCircle, BiDotsVerticalRounded } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
@@ -6,6 +6,7 @@ import { Flex } from "../Styles/Flexbox";
 
 const ToDo = () => {
   const initialState = JSON.parse(localStorage.getItem("todos")) || [];
+  const focusRef = useRef(null);
   const [showInput, setShowInput] = useState(false);
   const [input, setInput] = useState("");
   const [todos, setTodos] = useState(initialState);
@@ -18,6 +19,9 @@ const ToDo = () => {
 
   const handleToggle = () => {
     setShowInput(!showInput);
+    if (!showInput) {
+      focusRef.current.focus();
+    }
   };
 
   const updateTodo = (title, id, completed) => {
@@ -102,6 +106,7 @@ const ToDo = () => {
       <div className="todoItems">
         <form className={showInput ? null : "hidden"} onSubmit={handleSubmit}>
           <input
+            ref={focusRef}
             type="text"
             placeholder="Take a note..."
             value={input}
@@ -181,9 +186,10 @@ const StyledToDo = styled.div`
       width: 100%;
       border-radius: 6px;
       min-height: 48px;
+      background: transparent;
+      color: ${({ theme }) => theme.text};
     }
     & form.hidden {
-      visibility: hidden;
       opacity: 0;
       height: 0;
     }
@@ -227,7 +233,6 @@ const StyledToDo = styled.div`
         top: 90%;
         background: ${({ theme }) => theme.light};
         border: 1px solid ${({ theme }) => theme.border};
-        padding: 10px;
         right: -10px;
         border-radius: 4px;
         z-index: 2;
@@ -238,9 +243,14 @@ const StyledToDo = styled.div`
         }
         & span {
           display: block;
+          padding: 8px 16px;
           font-size: 14px;
           line-height: 1.8;
           letter-spacing: 0.02em;
+          border-bottom: 1px solid ${({ theme }) => theme.border};
+          &:last-child {
+            border: 0;
+          }
         }
       }
     }
@@ -248,5 +258,8 @@ const StyledToDo = styled.div`
   @media (max-width: 768px) {
     min-width: 100%;
     min-height: auto;
+  }
+  @media (max-width: 540px) {
+    padding-inline: 1rem;
   }
 `;

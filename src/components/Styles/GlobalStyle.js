@@ -10,6 +10,7 @@ export const lightTheme = {
   light: '#fff',
   border: '#f1ede7',
   rgb: '0,0,0',
+  white: '#fff',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
   transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }
@@ -24,6 +25,7 @@ export const darkTheme = {
   light: '#18191b',
   border: '#25262b',
   rgb: '255,255,255',
+  white: '#E1D8CC',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
   transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }
@@ -34,6 +36,13 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 :focus-visible {
     outline-offset: 2px;
@@ -65,7 +74,13 @@ button {
   border: 0;
   cursor: pointer;
 }
-h1 {font-size: 2.52rem;}
+hr {
+	background: transparent;
+	border: 1px solid ${({ theme }) => theme.border};
+	margin-block: 1rem;
+}
+
+h1 {font-size: 2.75rem;font-weight: 600;margin-bottom: 0.8rem;}
 
 h2 {font-size: 2.074rem;}
 
@@ -74,6 +89,8 @@ h3 {font-size: 1.728rem;}
 h4 {font-size: 1.44rem;}
 
 h5 {font-size: 1.2rem;}
+
+p {margin-bottom: 1rem}
 
 small {font-size: 0.9rem;}
 

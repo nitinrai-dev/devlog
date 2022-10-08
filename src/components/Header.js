@@ -36,7 +36,7 @@ const StyledHeader = styled.header`
     display: inline-flex;
     align-items: center;
     & a {
-      color: #E1D8CC;
+      color: ${({ theme }) => theme.white};
     }
     & button {
       width: 24px;
@@ -47,7 +47,7 @@ const StyledHeader = styled.header`
       & svg {
         width: 24px;
         height: 24px;
-        color: #E1D8CC;
+        color: ${({ theme }) => theme.white};
       }
     }
   }

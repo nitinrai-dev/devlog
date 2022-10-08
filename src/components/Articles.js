@@ -50,4 +50,7 @@ const StyledArticles = styled.div`
     padding-block: 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.border};
   }
+  @media (max-width: 540px) {
+    padding-inline: 1rem;
+  }
 `;
