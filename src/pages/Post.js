@@ -126,6 +126,10 @@ const StyleArticle = styled.section`
       padding: 1rem;
       margin-block: 1rem;
       border-radius: 6px;
+      overflow: auto;
+      & .highlight__panel {
+        display: none;
+      }
     }
   }
   @media (max-width: 540px) {
