@@ -1,8 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { BiCircle, BiDotsVerticalRounded } from "react-icons/bi";
+import { BiCircle, BiCheck, BiDotsVerticalRounded, BiEditAlt, BiMinusCircle } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import { Flex } from "../Styles/Flexbox";
+
+let useClickOutside = (handler) => {
+  let domNode = useRef();
+
+  useEffect(() => {
+    let maybeHandler = (event) => {
+      if (!domNode.current.contains(event.target)) {
+        handler();
+      }
+    };
+    document.addEventListener('mousedown', maybeHandler);
+    return () => {
+      document.removeEventListener('mousedown', maybeHandler);
+    };
+  });
+
+  return domNode;
+}
 
 const ToDo = () => {
   const initialState = JSON.parse(localStorage.getItem("todos")) || [];
@@ -79,6 +97,12 @@ const ToDo = () => {
   });
   }
 
+  // Click outside to close dropdown
+
+  let domNode = useClickOutside(() => {
+    setDropdown(null);
+  });
+
   return (
     <StyledToDo>
       <h4>
@@ -125,14 +149,14 @@ const ToDo = () => {
                 key={todo.id}
               >
                 <button className={`taskText ${todo.completed ? "completed" : ""}`} onClick={() => handleComplete(todo)} title="Done">
-                  <BiCircle />
+                  {todo.completed ? <BiCheck/> : <BiCircle/>}
                   <span>{todo.title}</span>
                 </button>
-                <button onClick={() => handleAction(todo)}>
+                <button ref={domNode} onClick={() => handleAction(todo)}>
                   <BiDotsVerticalRounded  title="More" />
                   <div className={`moreAction ${dropdown === todo.id ? 'active' : ''}`}>
-                    <span onClick={() => handleEdit(todo)}>Make changes</span>
-                    <span onClick={() => handleDelete(todo)}>Delete this task</span>
+                    <span onClick={() => handleEdit(todo)}><BiEditAlt/> Make changes</span>
+                    <span onClick={() => handleDelete(todo)}><BiMinusCircle/> Delete this task</span>
                   </div>
                 </button>
               </Flex>
@@ -218,7 +242,8 @@ const StyledToDo = styled.div`
         }
         &.completed svg {
           background: ${({ theme }) => theme.text};
-          transform: scale(0.8);
+          color: ${({ theme }) => theme.light};
+          transform: scale(0.85);
         }
         &.taskText {
           flex: 1;
@@ -243,12 +268,17 @@ const StyledToDo = styled.div`
           display: block;
         }
         & span {
-          display: block;
+          display: flex;
+          align-items: center;
+          gap: 8px;
           padding: 8px 16px;
           font-size: 14px;
           line-height: 1.8;
           letter-spacing: 0.02em;
           border-bottom: 1px solid ${({ theme }) => theme.border};
+          &:hover {
+            background-color: ${({ theme }) => theme.border};
+          }
           &:last-child {
             border: 0;
           }

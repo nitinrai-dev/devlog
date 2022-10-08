@@ -21,7 +21,7 @@ export const darkTheme = {
   accent3: '#a76825',
   background: "#121316",
   text: '#E1D8CC',
-  textLight: '#D2C4B1',
+  textLight: '#d9cebf',
   light: '#18191b',
   border: '#25262b',
   rgb: '255,255,255',

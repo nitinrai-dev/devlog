@@ -136,6 +136,12 @@ const StyleArticle = styled.section`
     padding-block: 2rem;
     & article {
       padding: 1rem;
+      & p {
+        font-size: 1.05rem;
+      }
+      & blockquote p {
+        font-size: 1.25rem;
+      }
     }
   }
 `
