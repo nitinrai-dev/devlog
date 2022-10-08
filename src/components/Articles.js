@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import { Flex } from "./Styles/Flexbox";
 
 const Articles = () => {
   const [posts, setPosts] = useState([]);
@@ -26,6 +27,15 @@ const Articles = () => {
           <Link to={`/${post.slug}`} state={post.path}>
             <h4>{post.title}</h4>
             <p>{post.description}</p>
+
+            <Flex spaceBetween>
+              <Flex className="tagList" alignCenter gap='0.5rem'>
+                {post.tag_list.map((tag, index) => (
+                  <small key={index}>{tag}</small>
+                ))}
+              </Flex>
+              <small>{post.reading_time_minutes} min read</small>
+            </Flex>
           </Link>
         </article>
       ))}
@@ -49,6 +59,18 @@ const StyledArticles = styled.div`
     display: block;
     padding-block: 1rem;
     border-bottom: 1px solid ${({ theme }) => theme.border};
+  }
+  & .tagList {
+    & > * {
+      padding: 1px 8px 4px;
+      border: 1px solid ${({ theme }) => theme.border};
+      border-radius: 10rem;
+      opacity: 0.9;
+      font-size: 0.8rem;
+    }
+    & + small {
+      min-width: max-content;
+    }
   }
   @media (max-width: 540px) {
     padding-inline: 1rem;
