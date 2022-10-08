@@ -64,6 +64,7 @@ const ToDo = () => {
     );
   };
   const handleEdit = ({ id }) => {
+    focusRef.current.focus();
     setShowInput(true);
     const findTodo = todos.find((todo) => todo.id === id);
     setEditTodo(findTodo);

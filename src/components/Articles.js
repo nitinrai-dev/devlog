@@ -28,7 +28,7 @@ const Articles = () => {
             <h4>{post.title}</h4>
             <p>{post.description}</p>
 
-            <Flex spaceBetween>
+            <Flex spaceBetween gap='1rem'>
               <Flex className="tagList" alignCenter flexWrap gap='0.5rem'>
                 {post.tag_list.map((tag, index) => (
                   <small key={index}>{tag}</small>
