@@ -13,7 +13,7 @@ const Header = ({ theme, themeToggler }) => {
           <button onClick={themeToggler} title='Change theme'>
             {theme === "light" ? <BiMoon/> : <BiSun/>}
           </button>
-          <a href="//www.nitinrai.dev/" target="_blank">Code by <b>Nitin Rai</b></a>
+          <a href="//www.nitinrai.dev/" target="_blank" rel="noreferrer">Code by <b>Nitin Rai</b></a>
           </div>
         </Flex>
       </Container>
