@@ -1,21 +1,21 @@
-import { useState } from "react";
 import { ThemeProvider } from "styled-components";
+import { useDarkMode } from "./useDarkMode";
 import {
   GlobalStyle,
   lightTheme,
   darkTheme,
-} from "./Styles/GlobalStyle";
+} from "../Styles/GlobalStyle";
 import Header from "./Header";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
-  const [theme, setTheme] = useState("light");
-  const themeToggler = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
+  const [theme, themeToggler, mountedComponent] = useDarkMode();
+  const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
+  if(!mountedComponent) return <div/>
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider theme={themeMode}>
       <GlobalStyle />
       <Header theme={theme} themeToggler={themeToggler} />
       <main>{children}</main>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BiMoon, BiSun } from "react-icons/bi";
-import { Flex } from "./Styles/Flexbox";
-import { Container } from "./Styles/GlobalStyle";
+import { Container } from "../Styles/GlobalStyle";
+import { Flex } from "../Styles/Flexbox";
 
 const Header = ({ theme, themeToggler }) => {
   return (

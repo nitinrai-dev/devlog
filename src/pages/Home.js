@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Articles from "../components/Articles";
-import Layout from "../components/Layout";
+import Layout from "../components/Global/Layout";
 import { Container } from "../components/Styles/GlobalStyle";
 import ToDo from "../components/TODO Section/ToDo";
 import Index from "../components/Weather Section";

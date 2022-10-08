@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Layout from "../components/Layout";
 import { Container } from "../components/Styles/GlobalStyle";
 import styled from "styled-components";
+import Layout from "../components/Global/Layout";
 
 const Post = () => {
   const location = useLocation();

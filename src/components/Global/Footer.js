@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Container } from "./Styles/GlobalStyle";
+import { Container } from "../Styles/GlobalStyle";
 
 const Footer = () => {
   return (
