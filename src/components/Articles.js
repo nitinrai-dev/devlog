@@ -29,7 +29,7 @@ const Articles = () => {
             <p>{post.description}</p>
 
             <Flex spaceBetween>
-              <Flex className="tagList" alignCenter gap='0.5rem'>
+              <Flex className="tagList" alignCenter flexWrap gap='0.5rem'>
                 {post.tag_list.map((tag, index) => (
                   <small key={index}>{tag}</small>
                 ))}
