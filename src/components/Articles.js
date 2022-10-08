@@ -42,11 +42,11 @@ const StyledArticles = styled.div`
   & > h4 {
     padding-block: 1rem;
     color: ${({ theme }) => theme.accent3};
-    border-bottom: 1px solid ${({ theme }) => theme.background};
+    border-bottom: 1px solid ${({ theme }) => theme.border};
   }
   & > article a {
     display: block;
     padding-block: 1rem;
-    border-bottom: 1px solid ${({ theme }) => theme.background};
+    border-bottom: 1px solid ${({ theme }) => theme.border};
   }
 `;

@@ -148,10 +148,11 @@ const StyledToDo = styled.div`
   & > h4 {
     padding-block: 1rem;
     color: ${({ theme }) => theme.accent3};
-    border-bottom: 1px solid ${({ theme }) => theme.background};
+    border-bottom: 1px solid ${({ theme }) => theme.border};
     & button {
-      background-color: #f5f5f5;
-      border: 1px solid #ddd;
+      background-color: transparent;
+      border: 1px solid ${({ theme }) => theme.border};
+      color: ${({ theme }) => theme.textLight};
       padding-inline: 1rem;
       border-radius: 6px;
       cursor: pointer;
@@ -163,7 +164,7 @@ const StyledToDo = styled.div`
   }
   & .placeholder {
     padding-block: 1rem 1.2rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid ${({ theme }) => theme.border};
     & h3 {
       line-height: 1.2;
       margin-bottom: 1rem;
@@ -172,7 +173,7 @@ const StyledToDo = styled.div`
   & .todoItems {
     padding-block: 1.2rem;
     & input {
-      border: 1px solid #ddd;
+      border: 1px solid ${({ theme }) => theme.border};
       padding: 15px 10px;
       display: block;
       width: 100%;
@@ -188,7 +189,7 @@ const StyledToDo = styled.div`
       background: transparent;
       margin-block: 0.5rem;
       border-radius: 6px;
-      border: 1px solid #ddd;
+      border: 1px solid ${({ theme }) => theme.border};
       & > button {
         position: relative;
         background: transparent;
@@ -198,6 +199,7 @@ const StyledToDo = styled.div`
         gap: 10px;
         padding: 12px 10px;
         text-align: left;
+        color: ${({ theme }) => theme.text};
         & svg {
           min-width: 20px;
           width: 20px;
@@ -206,7 +208,7 @@ const StyledToDo = styled.div`
           transition: transform 0.3s ease-in-out;
         }
         &.completed svg {
-          background: #111;
+          background: ${({ theme }) => theme.text};
           transform: scale(0.8);
         }
         &.taskText {
@@ -214,15 +216,15 @@ const StyledToDo = styled.div`
         }
         &.completed span {
           text-decoration: line-through;
-          color: #777;
+          color: ${({ theme }) => theme.textLight};
         }
       }
       & .moreAction {
         display: none;
         position: absolute;
         top: 90%;
-        background: #fff;
-        border: 1px solid #ddd;
+        background: ${({ theme }) => theme.light};
+        border: 1px solid ${({ theme }) => theme.border};
         padding: 10px;
         right: -10px;
         border-radius: 4px;

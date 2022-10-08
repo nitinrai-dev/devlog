@@ -97,12 +97,13 @@ const StyledWeather = styled.div`
     place-items: center;
     border: 0;
     opacity: 0.5;
+    color: ${({ theme }) => theme.text};
     &:hover {
       opacity: 1;
     }
   }
   & > div {
-    background: #fff;
+    background: ${({ theme }) => theme.light};;
     padding: 0.5rem 2rem 0.5rem 1.5rem;
     border-radius: 8px;
     & img {
@@ -114,7 +115,7 @@ const StyledWeather = styled.div`
       font-weight: 300;
     }
     & a {
-      color: #8d5a24;
+      color: ${({ theme }) => theme.accent3};
       font-weight: 400;
       letter-spacing: 0;
     }
@@ -125,7 +126,7 @@ const StyledWeather = styled.div`
     z-index: -1;
     width: max-content;
     padding: 1rem 1.5rem;
-    transition: 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     &.active {
       transform: translateX(calc(-100% + 16px));
     }
@@ -140,6 +141,7 @@ const StyledWeather = styled.div`
       width: 24px;
       height: 24px;
       transition: 0.3s ease-in-out;
+      color: ${({ theme }) => theme.text};
     }
     &.active svg {
       transform: scale(-1);

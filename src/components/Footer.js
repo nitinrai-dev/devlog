@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <StyledFooter>
         <Container>
-            <a href="//www.nitinrai.dev">Designed & Built by <b>Nitin Rai</b></a>
+            <small>Built with <b>ReactJS</b> · <b>Dev.to API</b> · <b>OpenWeather API</b> · <b>Styled Components</b> and more!</small>
         </Container>
     </StyledFooter>
   )
@@ -17,9 +17,13 @@ const StyledFooter = styled.footer`
     background-color: ${({ theme }) => theme.accent1};
     padding-block: 1rem;
     margin-top: 3rem;
-    & a {
+    & small {
         display: block;
         text-align: center;
-        color: ${({ theme }) => theme.accent2};
+        word-spacing: 2px;
+        color: ${({ theme }) => theme.light};
+        & b {
+          color: ${({ theme }) => theme.accent2};
+        }
     }
 `

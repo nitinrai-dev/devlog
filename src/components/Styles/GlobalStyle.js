@@ -6,20 +6,24 @@ export const lightTheme = {
   accent3: '#8b561f',
   background: '#f1ede7',
   text: '#1f2c1b',
+  textLight: '#2b3f27',
   light: '#fff',
+  border: '#f1ede7',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
-  transPrime: 'all .5s cubic-bezier(.7, 0, .3, 1)',
+  transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }
 
 export const darkTheme = {
-  accent1: '#22331d',
+  accent1: '#18191b',
   accent2: '#dded5f',
-  accent3: '#8b561f',
-  background: "#222",
-  text: '#fff',
-  light: '#333',
+  accent3: '#a76825',
+  background: "#121316",
+  text: '#E1D8CC',
+  textLight: '#D2C4B1',
+  light: '#18191b',
+  border: '#25262b',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
-  transPrime: 'all .5s cubic-bezier(.7, 0, .3, 1)',
+  transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -39,7 +43,7 @@ html {
 }
 body {
     background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
+    color: ${({ theme }) => theme.textLight};
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
     letter-spacing: 0.03em;
@@ -52,6 +56,8 @@ a {
     cursor: pointer;
 }
 button {
+  background: transparent;
+  border: 0;
   cursor: pointer;
 }
 h1 {font-size: 3.052rem;}
@@ -69,6 +75,7 @@ small {font-size: 0.9rem;}
 h1, h2, h3, h4, h5 {
     line-height: 1.3;
     font-weight: 400;
+    color: ${({ theme }) => theme.text};
 }
 
 @media (max-width: 600px) {
