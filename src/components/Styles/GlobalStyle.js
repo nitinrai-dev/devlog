@@ -9,6 +9,7 @@ export const lightTheme = {
   textLight: '#2b3f27',
   light: '#fff',
   border: '#f1ede7',
+  rgb: '0,0,0',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
   transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }
@@ -22,6 +23,7 @@ export const darkTheme = {
   textLight: '#D2C4B1',
   light: '#18191b',
   border: '#25262b',
+  rgb: '255,255,255',
   boxShadow: '0 10px 2rem 0 rgba(74,64,250,.04)',
   transition: 'all .5s cubic-bezier(.7, 0, .3, 1)',
 }

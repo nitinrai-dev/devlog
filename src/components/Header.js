@@ -35,16 +35,19 @@ const StyledHeader = styled.header`
   & .header-nav {
     display: inline-flex;
     align-items: center;
+    & a {
+      color: #E1D8CC;
+    }
     & button {
       width: 24px;
       height: 30px;
       display: flex;
       align-items: center;
-      margin-right: 30px;
+      margin-right: 20px;
       & svg {
         width: 24px;
         height: 24px;
-        color: ${({ theme }) => theme.accent2};
+        color: #E1D8CC;
       }
     }
   }

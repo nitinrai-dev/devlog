@@ -170,7 +170,7 @@ const StyledWeather = styled.div`
         width: 100%;
         height: 100%;
         z-index: 99;
-        background: rgba(0,0,0,0.3);
+        background: rgba(${({ theme }) => theme.rgb},0.4);
         & > span {
           position: absolute;
           inset: 0;
