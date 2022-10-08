@@ -60,7 +60,7 @@ button {
   border: 0;
   cursor: pointer;
 }
-h1 {font-size: 3.052rem;}
+h1 {font-size: 2.52rem;}
 
 h2 {font-size: 2.074rem;}
 

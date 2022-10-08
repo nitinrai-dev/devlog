@@ -16,12 +16,11 @@ export default Footer;
 const StyledFooter = styled.footer`
     background-color: ${({ theme }) => theme.accent1};
     padding-block: 1rem;
-    margin-top: 3rem;
     & small {
         display: block;
         text-align: center;
         word-spacing: 2px;
-        color: ${({ theme }) => theme.text};
+        color: #E1D8CC;
         & b {
           color: ${({ theme }) => theme.accent2};
         }

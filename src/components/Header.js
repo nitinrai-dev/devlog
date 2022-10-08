@@ -8,7 +8,7 @@ const Header = ({ theme, themeToggler }) => {
     <StyledHeader>
       <Container>
         <Flex alignCenter spaceBetween>
-          <h2>DEVLOG</h2>
+          <h2><a href="/">DEVLOG</a></h2>
           <div className="header-nav">
           <button onClick={themeToggler} title='Change theme'>
             {theme === "light" ? <BiMoon/> : <BiSun/>}
@@ -29,7 +29,7 @@ const StyledHeader = styled.header`
   padding-block: 1.5rem;
   background-color: ${({ theme }) => theme.accent1};
   color: ${({ theme }) => theme.accent2};
-  & h2, a {
+  & a {
     color: ${({ theme }) => theme.accent2};
   }
   & .header-nav {

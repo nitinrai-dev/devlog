@@ -22,6 +22,7 @@ const Home = () => {
 export default Home;
 
 const StyledWrapper = styled.section`
+  padding-bottom: 2rem;
   & > div {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
