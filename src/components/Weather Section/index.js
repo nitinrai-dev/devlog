@@ -62,10 +62,12 @@ const Index = () => {
           </div>
 
           <StyledWeather>
+
             <button onClick={getLocation} title='From your device'><BiCurrentLocation /></button>
             {status && <p>{status}</p>}
             <Weather lat={lat} lng={lng} openMore={openMore} />
             <button className={`openDrawer ${openMore ? 'active' : ''}`} onClick={handleOpen}><BiChevronLeft /></button>
+
           </StyledWeather>
         </Flex>
       </Container>
@@ -90,20 +92,18 @@ const StyledWeather = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    background: transparent;
     width: 30px;
     height: 30px;
     display: grid;
     place-items: center;
-    border: 0;
     opacity: 0.5;
     color: ${({ theme }) => theme.text};
     &:hover {
       opacity: 1;
     }
   }
-  & > div {
-    background: ${({ theme }) => theme.light};;
+  & > div > div > div {
+    background: ${({ theme }) => theme.light};
     padding: 0.5rem 2rem 0.5rem 1.5rem;
     border-radius: 8px;
     & img {
@@ -145,6 +145,51 @@ const StyledWeather = styled.div`
     }
     &.active svg {
       transform: scale(-1);
+    }
+  }
+  & .mobMain {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      border-radius: 8px;
+      background: ${({ theme }) => theme.light};
+      cursor: pointer;
+      & img {
+        width: 60px;
+      }
+      & + div, + div + .openDrawer {
+        display: none;
+      }
+      & + div.active {
+        display: grid;
+        place-items: center;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        background: rgba(0,0,0,0.3);
+        & > span {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          cursor: pointer;
+        }
+        & > div {
+          position: relative;
+          z-index: 2;
+          background-color: ${({ theme }) => theme.light};
+          border-radius: 8px;
+          overflow: hidden;
+          & .moreWeather {
+            position: static;
+            border-radius: 0;
+            background: ${({ theme }) => theme.background};
+          }
+        }
+      }
     }
   }
 `

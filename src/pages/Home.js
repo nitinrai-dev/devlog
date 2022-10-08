@@ -24,9 +24,11 @@ export default Home;
 const StyledWrapper = styled.section`
   padding-bottom: 2rem;
   & > div {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-gap: 2rem;
+    display: flex;
+    gap: 2rem;
     align-items: flex-start;
+    @media (max-width: 768px) {
+      flex-direction: column-reverse;
+    }
   }
 `;

@@ -48,4 +48,12 @@ const StyledHeader = styled.header`
       }
     }
   }
+  @media (max-width: 540px) {
+    padding-block: 1rem;
+    & .header-nav {
+      & button {
+        margin-right: 10px;
+      }
+    }
+  }
 `;

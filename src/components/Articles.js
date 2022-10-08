@@ -39,6 +39,7 @@ const StyledArticles = styled.div`
   padding-inline: 1.5rem;
   background-color: ${({ theme }) => theme.light};
   border-radius: 8px;
+  flex: 1.5;
   & > h4 {
     padding-block: 1rem;
     color: ${({ theme }) => theme.accent3};

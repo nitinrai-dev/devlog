@@ -49,6 +49,9 @@ body {
     letter-spacing: 0.03em;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    &.no-scroll {
+      overflow: hidden;
+    }
 }
 a {
     color: ${({ theme }) => theme.text};
@@ -96,15 +99,11 @@ export const Container = styled.div`
     css`
       width: 100vw;
     `}
-  @media (max-width: 540px) {
-    ${(props) =>
-      props.mobFluid &&
-      css`
-        padding-inline: 0;
-      `}
-  }
 
-  @media (max-width: 540px) {
+  @media (max-width: 850px) {
     width: calc(100vw - 3rem);
+  }
+  @media (max-width: 540px) {
+    width: calc(100vw - 2rem);
   }
 `;

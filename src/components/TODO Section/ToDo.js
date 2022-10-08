@@ -145,6 +145,8 @@ const StyledToDo = styled.div`
   background-color: ${({ theme }) => theme.light};
   border-radius: 8px;
   min-height: 80vh;
+  min-width: 350px;
+  flex: 1;
   & > h4 {
     padding-block: 1rem;
     color: ${({ theme }) => theme.accent3};
@@ -242,5 +244,9 @@ const StyledToDo = styled.div`
         }
       }
     }
+  }
+  @media (max-width: 768px) {
+    min-width: 100%;
+    min-height: auto;
   }
 `;

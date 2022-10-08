@@ -43,9 +43,25 @@ const StyleArticle = styled.section`
   padding-block: 4rem;
   min-height: calc(100vh - 144px);
   & article {
-    background: #fff;
+    background: ${({ theme }) => theme.light};
     border-radius: 8px;
     padding: 1.5rem;
+    & button {
+      background: ${({ theme }) => theme.accent3};
+      color: #fff;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    & img, video {
+      width: 100%;
+    }
   }
-
+  @media (max-width: 540px) {
+    padding-block: 2rem;
+    & article {
+      padding: 1rem;
+    }
+  }
 `
