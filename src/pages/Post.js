@@ -9,17 +9,13 @@ const Post = () => {
   const location = useLocation();
   const slug = location.state;
   const navigate = useNavigate();
-  const [path, setPath] = useState(slug);
+  const [path, setPath] = useState(window.localStorage.getItem('page_path'));
   const [post, SetPost] = useState({});
 
-  useEffect(() => {
-    const localPath = window.localStorage.getItem('page_path');
-    setPath(localPath);
-  }, [])
 
   useEffect(() => {
-    console.log(path);
-    window.localStorage.setItem('page_path', path);
+    window.localStorage.setItem('page_path', slug);
+    setPath(slug);
     const fetch = async () => {
       try {
         const { data } = await axios.get(`https://dev.to/api/articles/${path}`);
@@ -29,7 +25,7 @@ const Post = () => {
       }
     };
     fetch();
-  }, [path]);
+  }, [slug, path]);
 
   return (
     <Layout>
