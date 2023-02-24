@@ -14,11 +14,11 @@ const Post = () => {
 
   useEffect(() => {
     const localPath = window.localStorage.getItem('page_path');
-    setPath(JSON.parse(localPath));
+    setPath(localPath);
   }, [])
 
   useEffect(() => {
-    window.localStorage.setItem('page_path', JSON.stringify(slug));
+    window.localStorage.setItem('page_path', path);
     const fetch = async () => {
       try {
         const { data } = await axios.get(`https://dev.to/api/articles/${path}`);
@@ -28,7 +28,8 @@ const Post = () => {
       }
     };
     fetch();
-  }, [slug, path]);
+  }, [path]);
+
   return (
     <Layout>
       <StyleArticle>
