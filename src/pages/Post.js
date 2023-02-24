@@ -9,18 +9,26 @@ const Post = () => {
   const location = useLocation();
   const slug = location.state;
   const navigate = useNavigate();
+  const [path, setPath] = useState(slug);
   const [post, SetPost] = useState({});
+
   useEffect(() => {
+    const localPath = window.localStorage.getItem('page_path');
+    setPath(JSON.parse(localPath));
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem('page_path', JSON.stringify(slug));
     const fetch = async () => {
       try {
-        const { data } = await axios.get(`https://dev.to/api/articles/${slug}`);
+        const { data } = await axios.get(`https://dev.to/api/articles/${path}`);
         SetPost(data);
       } catch (err) {
         console.error(err);
       }
     };
     fetch();
-  }, [slug]);
+  }, [slug, path]);
   return (
     <Layout>
       <StyleArticle>
