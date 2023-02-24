@@ -16,6 +16,9 @@ const Post = () => {
   useEffect(() => {
     window.localStorage.setItem('page_path', slug);
     setPath(slug);
+  }, [slug]);
+
+  useEffect(() => {
     const fetch = async () => {
       try {
         const { data } = await axios.get(`https://dev.to/api/articles/${path}`);
@@ -25,7 +28,7 @@ const Post = () => {
       }
     };
     fetch();
-  }, [slug, path]);
+  }, [path]);
 
   return (
     <Layout>
