@@ -18,6 +18,7 @@ const Post = () => {
   }, [])
 
   useEffect(() => {
+    console.log(path);
     window.localStorage.setItem('page_path', path);
     const fetch = async () => {
       try {
